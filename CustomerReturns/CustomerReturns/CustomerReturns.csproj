@@ -34,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,6 +63,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="InvoiceToSend.cs" />
+    <Compile Include="LibraBurgas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraBurgas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraSofia.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraSofia.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraSofia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraSofia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraSofia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraSofia.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.cs">
+      <DependentUpon>LibraSofia.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,6 +94,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="LibraBurgas.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraBurgas.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraBurgas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraBurgas.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -85,6 +129,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="LibraBurgas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LibraBurgas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LibraBurgas.edmx.diagram">
+      <DependentUpon>LibraBurgas.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="LibraSofia.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LibraSofia.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LibraSofia.edmx.diagram">
+      <DependentUpon>LibraSofia.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +151,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LibraBurgas.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LibraBurgas.Context.cs</LastGenOutput>
+      <DependentUpon>LibraBurgas.edmx</DependentUpon>
+    </Content>
+    <Content Include="LibraBurgas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraBurgas.edmx</DependentUpon>
+      <LastGenOutput>LibraBurgas.cs</LastGenOutput>
+    </Content>
+    <Content Include="LibraSofia.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraSofia.edmx</DependentUpon>
+      <LastGenOutput>LibraSofia.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LibraSofia.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraSofia.edmx</DependentUpon>
+      <LastGenOutput>LibraSofia.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

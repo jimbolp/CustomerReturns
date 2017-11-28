@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LibraSofiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CorrectedSaleID" Type="bigint" />
+          <Property Name="CreditReasonID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="DocTypeID" Type="int" Nullable="false" />
+          <Property Name="DocDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="DocNo" Type="bigint" Nullable="false" />
+          <Property Name="VATPercent" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="MOLID" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="AppUserID" Type="int" Nullable="false" />
+          <Property Name="AppUserTime" Type="smalldatetime" />
+          <Property Name="PaymentConsignDate" Type="smalldatetime" />
+          <Property Name="ShipmentDate" Type="smalldatetime" />
+          <Property Name="RebatePeriodFrom" Type="smalldatetime" />
+          <Property Name="isCashRegistered" Type="bit" Nullable="false" />
+          <Property Name="isPayed" Type="bit" Nullable="false" />
+          <Property Name="isPrinted" Type="bit" Nullable="false" />
+          <Property Name="ManipulUserID" Type="int" />
+          <Property Name="ManipulUserTime" Type="smalldatetime" />
+          <Property Name="DriverID" Type="int" />
+          <Property Name="DriverTime" Type="smalldatetime" />
+          <Property Name="RouteID" Type="int" />
+          <Property Name="PaymentTypeID" Type="int" Nullable="false" />
+          <Property Name="PaymentTimeID" Type="int" Nullable="false" />
+          <Property Name="DiscountTypeID" Type="int" Nullable="false" />
+          <Property Name="TotalPriceNoVAT" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="TotalDiscountSum" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="TotalDeliveryPrice" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="PaymentSum" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="RebateSumCorrection" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="PayedRebateSum" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="isColumnNaturalRebatePercent" Type="bit" Nullable="false" />
+          <Property Name="isSalePriceWithoutDiscount" Type="bit" Nullable="false" />
+          <Property Name="isMathDiscountType" Type="bit" Nullable="false" />
+          <Property Name="SpecialDrugForm" Type="varchar" MaxLength="40" />
+          <Property Name="isCustomerDelayPayments" Type="bit" Nullable="false" />
+          <Property Name="isPricing" Type="bit" Nullable="false" />
+          <Property Name="TotalBasePrice" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="PaymentDateValuta" Type="smalldatetime" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="80" />
+          <Property Name="TotalAdditionalDiscountSum" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="AdditionalRebateSumCorrection" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="PayedAdditionalRebateSum" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="isSalePriceWithoutRounding" Type="bit" />
+          <Property Name="DistributeTime" Type="smalldatetime" />
+          <Property Name="isArchive" Type="bit" />
+          <Property Name="isPharmacyPriceWithoutDiscount" Type="bit" />
+          <Property Name="OverdueInterestPeriodFrom" Type="smalldatetime" />
+          <Property Name="TotalNetoBasePrice" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="TotalNetoNetoBasePrice" Type="decimal" Precision="19" Scale="2" />
+          <Property Name="isJoined" Type="bit" />
+          <Property Name="OverdueInterestPeriodTo" Type="smalldatetime" />
+          <Property Name="TargetActionID" Type="int" />
+          <Property Name="isHighCost" Type="bit" />
+          <Property Name="isFCOrder" Type="bit" />
+          <Property Name="VendorID" Type="tinyint" />
+          <Property Name="isPositioned" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="LibraSofiaModelStoreContainer">
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraSofiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CorrectedSaleID" Type="Int64" />
+          <Property Name="CreditReasonID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="DocTypeID" Type="Int32" Nullable="false" />
+          <Property Name="DocDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DocNo" Type="Int64" Nullable="false" />
+          <Property Name="VATPercent" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="MOLID" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AppUserID" Type="Int32" Nullable="false" />
+          <Property Name="AppUserTime" Type="DateTime" Precision="0" />
+          <Property Name="PaymentConsignDate" Type="DateTime" Precision="0" />
+          <Property Name="ShipmentDate" Type="DateTime" Precision="0" />
+          <Property Name="RebatePeriodFrom" Type="DateTime" Precision="0" />
+          <Property Name="isCashRegistered" Type="Boolean" Nullable="false" />
+          <Property Name="isPayed" Type="Boolean" Nullable="false" />
+          <Property Name="isPrinted" Type="Boolean" Nullable="false" />
+          <Property Name="ManipulUserID" Type="Int32" />
+          <Property Name="ManipulUserTime" Type="DateTime" Precision="0" />
+          <Property Name="DriverID" Type="Int32" />
+          <Property Name="DriverTime" Type="DateTime" Precision="0" />
+          <Property Name="RouteID" Type="Int32" />
+          <Property Name="PaymentTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTimeID" Type="Int32" Nullable="false" />
+          <Property Name="DiscountTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TotalPriceNoVAT" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="TotalDiscountSum" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="TotalDeliveryPrice" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="PaymentSum" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="RebateSumCorrection" Type="Decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="PayedRebateSum" Type="Decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="isColumnNaturalRebatePercent" Type="Boolean" Nullable="false" />
+          <Property Name="isSalePriceWithoutDiscount" Type="Boolean" Nullable="false" />
+          <Property Name="isMathDiscountType" Type="Boolean" Nullable="false" />
+          <Property Name="SpecialDrugForm" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="isCustomerDelayPayments" Type="Boolean" Nullable="false" />
+          <Property Name="isPricing" Type="Boolean" Nullable="false" />
+          <Property Name="TotalBasePrice" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="PaymentDateValuta" Type="DateTime" Precision="0" />
+          <Property Name="OrderNo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAdditionalDiscountSum" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="AdditionalRebateSumCorrection" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="PayedAdditionalRebateSum" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="isSalePriceWithoutRounding" Type="Boolean" />
+          <Property Name="DistributeTime" Type="DateTime" Precision="0" />
+          <Property Name="isArchive" Type="Boolean" />
+          <Property Name="isPharmacyPriceWithoutDiscount" Type="Boolean" />
+          <Property Name="OverdueInterestPeriodFrom" Type="DateTime" Precision="0" />
+          <Property Name="TotalNetoBasePrice" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="TotalNetoNetoBasePrice" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="isJoined" Type="Boolean" />
+          <Property Name="OverdueInterestPeriodTo" Type="DateTime" Precision="0" />
+          <Property Name="TargetActionID" Type="Int32" />
+          <Property Name="isHighCost" Type="Boolean" />
+          <Property Name="isFCOrder" Type="Boolean" />
+          <Property Name="VendorID" Type="Byte" />
+          <Property Name="isPositioned" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="LibraSofiaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraSofiaModelStoreContainer" CdmEntityContainer="LibraSofiaEntities">
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="LibraSofiaModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CorrectedSaleID" ColumnName="CorrectedSaleID" />
+                <ScalarProperty Name="CreditReasonID" ColumnName="CreditReasonID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="DocTypeID" ColumnName="DocTypeID" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="VATPercent" ColumnName="VATPercent" />
+                <ScalarProperty Name="MOLID" ColumnName="MOLID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
+                <ScalarProperty Name="AppUserTime" ColumnName="AppUserTime" />
+                <ScalarProperty Name="PaymentConsignDate" ColumnName="PaymentConsignDate" />
+                <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+                <ScalarProperty Name="RebatePeriodFrom" ColumnName="RebatePeriodFrom" />
+                <ScalarProperty Name="isCashRegistered" ColumnName="isCashRegistered" />
+                <ScalarProperty Name="isPayed" ColumnName="isPayed" />
+                <ScalarProperty Name="isPrinted" ColumnName="isPrinted" />
+                <ScalarProperty Name="ManipulUserID" ColumnName="ManipulUserID" />
+                <ScalarProperty Name="ManipulUserTime" ColumnName="ManipulUserTime" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="DriverTime" ColumnName="DriverTime" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="PaymentTimeID" ColumnName="PaymentTimeID" />
+                <ScalarProperty Name="DiscountTypeID" ColumnName="DiscountTypeID" />
+                <ScalarProperty Name="TotalPriceNoVAT" ColumnName="TotalPriceNoVAT" />
+                <ScalarProperty Name="TotalDiscountSum" ColumnName="TotalDiscountSum" />
+                <ScalarProperty Name="TotalDeliveryPrice" ColumnName="TotalDeliveryPrice" />
+                <ScalarProperty Name="PaymentSum" ColumnName="PaymentSum" />
+                <ScalarProperty Name="RebateSumCorrection" ColumnName="RebateSumCorrection" />
+                <ScalarProperty Name="PayedRebateSum" ColumnName="PayedRebateSum" />
+                <ScalarProperty Name="isColumnNaturalRebatePercent" ColumnName="isColumnNaturalRebatePercent" />
+                <ScalarProperty Name="isSalePriceWithoutDiscount" ColumnName="isSalePriceWithoutDiscount" />
+                <ScalarProperty Name="isMathDiscountType" ColumnName="isMathDiscountType" />
+                <ScalarProperty Name="SpecialDrugForm" ColumnName="SpecialDrugForm" />
+                <ScalarProperty Name="isCustomerDelayPayments" ColumnName="isCustomerDelayPayments" />
+                <ScalarProperty Name="isPricing" ColumnName="isPricing" />
+                <ScalarProperty Name="TotalBasePrice" ColumnName="TotalBasePrice" />
+                <ScalarProperty Name="PaymentDateValuta" ColumnName="PaymentDateValuta" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="TotalAdditionalDiscountSum" ColumnName="TotalAdditionalDiscountSum" />
+                <ScalarProperty Name="AdditionalRebateSumCorrection" ColumnName="AdditionalRebateSumCorrection" />
+                <ScalarProperty Name="PayedAdditionalRebateSum" ColumnName="PayedAdditionalRebateSum" />
+                <ScalarProperty Name="isSalePriceWithoutRounding" ColumnName="isSalePriceWithoutRounding" />
+                <ScalarProperty Name="DistributeTime" ColumnName="DistributeTime" />
+                <ScalarProperty Name="isArchive" ColumnName="isArchive" />
+                <ScalarProperty Name="isPharmacyPriceWithoutDiscount" ColumnName="isPharmacyPriceWithoutDiscount" />
+                <ScalarProperty Name="OverdueInterestPeriodFrom" ColumnName="OverdueInterestPeriodFrom" />
+                <ScalarProperty Name="TotalNetoBasePrice" ColumnName="TotalNetoBasePrice" />
+                <ScalarProperty Name="TotalNetoNetoBasePrice" ColumnName="TotalNetoNetoBasePrice" />
+                <ScalarProperty Name="isJoined" ColumnName="isJoined" />
+                <ScalarProperty Name="OverdueInterestPeriodTo" ColumnName="OverdueInterestPeriodTo" />
+                <ScalarProperty Name="TargetActionID" ColumnName="TargetActionID" />
+                <ScalarProperty Name="isHighCost" ColumnName="isHighCost" />
+                <ScalarProperty Name="isFCOrder" ColumnName="isFCOrder" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="isPositioned" ColumnName="isPositioned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
