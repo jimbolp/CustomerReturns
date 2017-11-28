@@ -1,0 +1,57 @@
+﻿<Window x:Class="CustomerReturns.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomerReturns"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+
+    <Border Padding="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" >
+                    <TextBlock x:Name="InvoiceLabel" HorizontalAlignment="Center" Text="Фактура Номер"/>
+                    <TextBox x:Name="InvoiceNumberTextBox" Padding="1" Margin="3,3,3,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="DateLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Дата на документ"/>
+                    <TextBox x:Name="DateTextBox" Padding="1" Margin="3,3,3,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock x:Name="CustomerLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Клиент номер"/>
+                    <TextBox x:Name="CustomerTextBox"  Padding="1" Margin="3,3,3,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3">
+                    <TextBlock x:Name="BranchLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Филиал"/>
+                    <TextBox x:Name="BranchTextBox" Padding="1" Margin="3,3,3,0"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="NextInvoice" Content="Следваща фактура" FontWeight="Bold" Grid.Column="0" Margin="13"/>
+                <Button x:Name="GenerateMail" Content="Приключи и изпрати" FontWeight="Bold" Grid.Column="1" Margin="13"/>
+                <Button x:Name="Reset" Content="Ново въвеждане" FontWeight="Bold" Grid.Column="2" Margin="13"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBox x:Name="FreeTextTextBox"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
