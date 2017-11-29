@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,8 +24,14 @@ namespace CustomerReturns
     {
         public LibraSofiaEntities dbSofia { get; set; }
         public LibraBurgasEntities dbBurgas { get; set; }
+        public LibraPlovdivEntities dbPlovdiv { get; set; }
+        public LibraVelikoTyrnovoEntities dbVelikoTyrnovo { get; set; }
+        public LibraVarnaEntities dbVarna { get; set; }
         public bool ConnectionEstablished { get; set; } = false;
         public List<InvoiceToSend> invoices = new List<InvoiceToSend>();
+        public List<long> NotFound { get; set; } = new List<long>();
+        public string Subject { get; set; } = "";
+        public string Body { get; set; } = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +39,9 @@ namespace CustomerReturns
             {
                 dbSofia = new LibraSofiaEntities();
                 dbBurgas = new LibraBurgasEntities();
+                dbPlovdiv = new LibraPlovdivEntities();
+                dbVelikoTyrnovo = new LibraVelikoTyrnovoEntities();
+                dbVarna = new LibraVarnaEntities();
                 ConnectionEstablished = true;
             }
             catch (DbException)
@@ -42,37 +52,94 @@ namespace CustomerReturns
 
         private void FreeTextTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            List<long> invoiceNumbers = Helper.SplitText(FreeTextTextBox.Text);
-
-            if (invoiceNumbers == null)
-                return;
-            if (ConnectionEstablished)
+            Thread t = new Thread(() =>
             {
-                foreach(long invoice in invoiceNumbers)
+                List<long> invoiceNumbers = Helper.SplitText(FreeTextTextBox.Dispatcher.Invoke(() => FreeTextTextBox.Text));
+
+                if (invoiceNumbers == null)
+                    return;
+                if (ConnectionEstablished)
                 {
-                    switch (Helper.GetBranch(invoice.ToString()))
+                    foreach (long invoice in invoiceNumbers)
                     {
-                        case 22:
-                            {
-                                var sale = Helper.SearchTheDatabase(dbSofia, invoice);
-                                if(sale == null)
-                                    break;
-                                else
-                                {
-                                    invoices.Add(new InvoiceToSend() { CustomerNumber = Helper.GetControlDigit(sale.CustomerID ?? 0) });
-                                }
+                        Sale sale = null;
+                        switch (Helper.GetBranch(invoice.ToString()))
+                        {
+                            case Branch.Sofia:
+                                sale = Helper.SearchTheDatabase(dbSofia, invoice);
                                 break;
-                            }
-                        case 23:
-                            Helper.SearchTheDatabase(dbBurgas, invoice);
-                            break;
-                        default:
-                            break;
+                            case Branch.Burgas:
+                                sale = Helper.SearchTheDatabase(dbBurgas, invoice);
+                                break;
+                            case Branch.Plovdiv:
+                                sale = Helper.SearchTheDatabase(dbPlovdiv, invoice);
+                                break;
+                            case Branch.VelikoTyrnovo:
+                                {
+                                    sale = Helper.SearchTheDatabase(dbVelikoTyrnovo, invoice);
+                                    if (sale == null)
+                                    {
+                                        sale = Helper.SearchTheDatabase(dbVarna, invoice);
+                                    }
+                                    break;
+                                }
+                            default:
+                                break;
+                        }
+                        if (sale == null)
+                        {
+                            NotFound.Add(invoice);
+                        }
+                        else
+                        {
+                            invoices.Add(new InvoiceToSend()
+                            {
+                                CustomerNumber = Helper.GetControlDigit(sale.CustomerID ?? 0),
+                                InvoiceNumber = sale.DocNo,
+                                InvoiceDate = sale.DocDate,
+                                Branch = (int)Helper.GetBranch(sale.DocNo.ToString())
+                            });
+                        }
                     }
                 }
-                //Helper.SearchTheDatabase(dbBurgas);
+                if (invoices.Count != 0)
+                    CreateEmail();
+            });
+            t.Start();
+        }
+
+        private void CreateEmail()
+        {
+            string multi = invoices.Count != 1 ? "s" : "";
+            Subject = $"Customer Returns - load old invoice{multi} into invoice history";
+
+            Body = $"Please load the following invoice{multi}:" + Environment.NewLine;
+            foreach(InvoiceToSend invoice in invoices)
+            {
+                Body += Environment.NewLine 
+                    + invoice;
             }
-            //Helper.SplitText(FreeTextTextBox.Text);
+            if (invoices.Count != 1)
+            {
+                Body += Environment.NewLine 
+                    + Environment.NewLine 
+                    + $"The invoices are not available in the invoice history (DKHIS) and have to be reloaded!";
+            }
+            else
+            {
+                Body += Environment.NewLine 
+                    + Environment.NewLine 
+                    + $"The invoice is not available in the invoice history (DKHIS) and has to be reloaded!";
+            }
+
+            InfoLabel.Dispatcher.Invoke(() => InfoLabel.Text = "Subject: "
+                + Environment.NewLine
+                + Subject
+                + Environment.NewLine
+                + Environment.NewLine
+                + "Body: "
+                + Environment.NewLine
+                + Body);
         }
     }
 }

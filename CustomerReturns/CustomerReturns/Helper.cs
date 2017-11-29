@@ -40,25 +40,25 @@ namespace CustomerReturns
             return null;
         }
 
-        public static int GetBranch(string invoiceNo)
+        public static Branch GetBranch(string invoiceNo)
         {
             if (invoiceNo.StartsWith("1"))
             {
-                return 22;
+                return Branch.Sofia;
             }
             else if (invoiceNo.StartsWith("2"))
             {
-                return 23;
+                return Branch.Burgas;
             }
             else if (invoiceNo.StartsWith("3"))
             {
-                return 26;
+                return Branch.VelikoTyrnovo;
             }
-            else if (invoiceNo.StartsWith("5"))
+            else if (invoiceNo.StartsWith("4"))
             {
-                return 25;
+                return Branch.Plovdiv;
             }
-            return -1;
+            return Branch.NaN;
         }
 
         public static Sale SearchTheDatabase(object db, long invoice)
@@ -80,13 +80,13 @@ namespace CustomerReturns
         {
             if (number <= 0)
                 return 0;
-            int result = (7 * ((number / 1) % 10) + 6 * ((number / 10) % 10)
-            + 5 * ((number / 100) % 10) + 4 * ((number / 1000) % 10)
-            + 3 * ((number / 10000) % 10) + 2 * ((number / 100000) % 10));
+            int result = ((7 * ((number / 1) % 10)) + (6 * ((number / 10) % 10))
+            + (5 * ((number / 100) % 10)) + (4 * ((number / 1000) % 10))
+            + (3 * ((number / 10000) % 10)) + (2 * ((number / 100000) % 10)));
             if ((result % 11) == 10)
-                number = number * 10 + 0;
+                result = number * 10 + 0;
             else
-                number = number * 10 + (result % 11);
+                result = number * 10 + (result % 11);
 
             return result;
         }

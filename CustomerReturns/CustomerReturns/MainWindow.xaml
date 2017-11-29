@@ -51,12 +51,14 @@
             </Grid>
             <Grid Grid.Row="2">
                 <Border Padding="5">
-                <TextBox x:Name="FreeTextTextBox" TextChanged="FreeTextTextBox_TextChanged"/>
+                <TextBox x:Name="FreeTextTextBox" TextChanged="FreeTextTextBox_TextChanged" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True" TextWrapping="WrapWithOverflow"/>
                 </Border>
             </Grid>
-            <Grid Grid.Column="3">
-                <Border Padding="5">
+            <Grid Grid.Row="3">
+                <Border Padding="3">
+                    <ScrollViewer>
                     <TextBlock x:Name="InfoLabel"/>
+                    </ScrollViewer>
                 </Border>
             </Grid>
         </Grid>

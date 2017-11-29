@@ -63,11 +63,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Branch.cs" />
     <Compile Include="InvoiceToSend.cs" />
     <Compile Include="LibraBurgas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraBurgas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraPlovdiv.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraPlovdiv.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraPlovdiv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraPlovdiv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraPlovdiv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraPlovdiv.edmx</DependentUpon>
     </Compile>
     <Compile Include="LibraSofia.Context.cs">
       <AutoGen>True</AutoGen>
@@ -84,8 +100,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibraSofia.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LibraVarna.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraVarna.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraVarna.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraVarna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraVarna.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraVarna.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LibraVelikoTyrnovo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraVelikoTyrnovo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraVelikoTyrnovo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraVelikoTyrnovo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibraVelikoTyrnovo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraVelikoTyrnovo.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Sale.cs">
-      <DependentUpon>LibraSofia.tt</DependentUpon>
+      <DependentUpon>LibraVarna.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -140,8 +186,29 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LibraSofia.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="LibraPlovdiv.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LibraPlovdiv.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LibraPlovdiv.edmx.diagram">
+      <DependentUpon>LibraPlovdiv.edmx</DependentUpon>
+    </None>
     <None Include="LibraSofia.edmx.diagram">
       <DependentUpon>LibraSofia.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="LibraVelikoTyrnovo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LibraVelikoTyrnovo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="LibraVarna.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LibraVarna.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LibraVarna.edmx.diagram">
+      <DependentUpon>LibraVarna.edmx</DependentUpon>
+    </None>
+    <None Include="LibraVelikoTyrnovo.edmx.diagram">
+      <DependentUpon>LibraVelikoTyrnovo.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -163,6 +230,16 @@
       <DependentUpon>LibraBurgas.edmx</DependentUpon>
       <LastGenOutput>LibraBurgas.cs</LastGenOutput>
     </Content>
+    <Content Include="LibraPlovdiv.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraPlovdiv.edmx</DependentUpon>
+      <LastGenOutput>LibraPlovdiv.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LibraPlovdiv.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraPlovdiv.edmx</DependentUpon>
+      <LastGenOutput>LibraPlovdiv.cs</LastGenOutput>
+    </Content>
     <Content Include="LibraSofia.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LibraSofia.edmx</DependentUpon>
@@ -172,6 +249,26 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LibraSofia.edmx</DependentUpon>
       <LastGenOutput>LibraSofia.cs</LastGenOutput>
+    </Content>
+    <Content Include="LibraVarna.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraVarna.edmx</DependentUpon>
+      <LastGenOutput>LibraVarna.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LibraVarna.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraVarna.edmx</DependentUpon>
+      <LastGenOutput>LibraVarna.cs</LastGenOutput>
+    </Content>
+    <Content Include="LibraVelikoTyrnovo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraVelikoTyrnovo.edmx</DependentUpon>
+      <LastGenOutput>LibraVelikoTyrnovo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LibraVelikoTyrnovo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraVelikoTyrnovo.edmx</DependentUpon>
+      <LastGenOutput>LibraVelikoTyrnovo.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
