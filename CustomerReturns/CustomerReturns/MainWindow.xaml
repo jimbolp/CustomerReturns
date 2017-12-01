@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerReturns"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="416.438" Width="676.158">
 
     <Border Padding="5">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -44,20 +44,30 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="NextInvoice" Content="Следваща фактура" FontWeight="Bold" Grid.Column="0" Margin="13"/>
-                <Button x:Name="GenerateMail" Content="Приключи и изпрати" FontWeight="Bold" Grid.Column="1" Margin="13"/>
-                <Button x:Name="Reset" Content="Ново въвеждане" FontWeight="Bold" Grid.Column="2" Margin="13"/>
+                <StackPanel Grid.Column="0">
+                    <Button x:Name="NextInvoice" Content="Следваща фактура" FontWeight="Bold" Margin="13"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Button x:Name="GenerateMail" Content="Приключи и изпрати" FontWeight="Bold" Margin="13" Click="GenerateMail_Click"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <Button x:Name="GenerateProform" Content="Проформа" FontWeight="Bold" Margin="13" Click="GenerateProform_Click"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3">
+                    <Button x:Name="Reset" Content="Ново въвеждане" FontWeight="Bold" Margin="13" Click="Reset_Click"/>
+                </StackPanel>
             </Grid>
             <Grid Grid.Row="2">
                 <Border Padding="5">
-                <TextBox x:Name="FreeTextTextBox" TextChanged="FreeTextTextBox_TextChanged" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True" TextWrapping="WrapWithOverflow"/>
+                    <RichTextBox x:Name="FreeTextTextBox" TextChanged="FreeTextTextBox_TextChanged" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True"/>
                 </Border>
             </Grid>
             <Grid Grid.Row="3">
                 <Border Padding="3">
                     <ScrollViewer>
-                    <TextBlock x:Name="InfoLabel"/>
+                        <TextBlock x:Name="InfoLabel" Focusable="True" TextWrapping="WrapWithOverflow" TextOptions.TextHintingMode="Animated"/>
                     </ScrollViewer>
                 </Border>
             </Grid>
